@@ -39,8 +39,8 @@ function Home() {
             {itemsNotebooks && itemsNotebooks.length > 0 ? <ListContainer items={itemsNotebooks} /> : <Loader />}
             <NavLink to="/category/Processor" >
                 <h2 className='text-center font-bold text-lg bg-emerald-50'>Procesadores</h2>
-                {itemsProcessors && itemsProcessors.length > 0 ? <ListContainer items={itemsProcessors} /> : <Loader />}
             </NavLink>
+            {itemsProcessors && itemsProcessors.length > 0 ? <ListContainer items={itemsProcessors} /> : <Loader />}
             <NavLink to="/category/Motherboard" >
                 <h2 className='text-center font-bold text-lg bg-emerald-50'>Placas Base</h2>
             </NavLink>

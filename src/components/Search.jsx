@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 function Search() {
 
-    const {findText, findPriceFrom, findPriceTo, setFindText, setFindPriceFrom, setFindPriceTo} = useContext(CartContext);
+    const navigate = useNavigate();
+    const { findText, findPriceFrom, findPriceTo, setFindText, setFindPriceFrom, setFindPriceTo,
+        reloadSearch, setReloadSearch } = useContext(CartContext);
 
     const handleClean = () => {
         setFindText('');
@@ -13,6 +15,13 @@ function Search() {
         setFindText(null);
         setFindPriceFrom(null);
         setFindPriceTo(null);
+    }
+
+    const handleSearch = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setReloadSearch(!reloadSearch);
+        navigate('/results');
     }
 
     return (
@@ -42,9 +51,7 @@ function Search() {
                     onChange={(e) => setFindPriceTo(e.target.value)}
                     value={findPriceTo}
                 />
-                <NavLink to={`/results`}>
-                    <button className="btn " >Buscar</button>
-                </NavLink>
+                <button className="btn " onClick={(e) => handleSearch(e)}>Buscar</button>
                 <button className="btn " type="Reset" onClick={handleClean} >Limpiar</button>
             </form>
         </div>

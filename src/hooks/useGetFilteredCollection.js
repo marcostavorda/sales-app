@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { getFirestore, getDocs, collection, doc, getDoc, query, where, limit } from 'firebase/firestore';
+import { CartContext } from '../context/CartContext';
 
 export function useGetFilteredCollection(category, limitSize) {
     const [items, setItems] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const {reloadSearch} = useContext(CartContext);
 
     useEffect(() => {
         setLoading(true)
@@ -30,7 +33,7 @@ export function useGetFilteredCollection(category, limitSize) {
             .finally(() => setLoading(false));
 
 
-    }, [category, limitSize]);
+    }, [category, limitSize, reloadSearch]);
 
     return { items, error, loading };
 }

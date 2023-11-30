@@ -1,5 +1,5 @@
 import { useGetFilteredCollection } from "../hooks/useGetFilteredCollection";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import Loader from "../components/Loader";
 import ListContainer from "../components/ListContainer";

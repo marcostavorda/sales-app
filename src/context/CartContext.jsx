@@ -16,6 +16,7 @@ export function CartProvider({ children }) {
   const [findText, setFindText] = useState(null);
   const [findPriceFrom, setFindPriceFrom] = useState(null);
   const [findPriceTo, setFindPriceTo] = useState(null);
+  const [reloadSearch, setReloadSearch] = useState(null);
   
   const [cart, setCart] = useState(initialItems);
   const [cartItems, setCartItems] = useState([]);
@@ -122,8 +123,10 @@ export function CartProvider({ children }) {
         setFindText,
         findPriceFrom, 
         setFindPriceFrom,
-        findPriceTo, 
-        setFindPriceTo
+        findPriceTo,
+        setFindPriceTo,
+        reloadSearch,
+        setReloadSearch
       }}
     >
       {children}
